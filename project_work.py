@@ -14,6 +14,8 @@ def get_changes(magnitudes):
     NOTE: Your return list should always be one element smaller than the input list. Why is that?
     EXAMPLE: if magnitudes = [100, 200, 50, 100], this function should return [100, -150, 50]
     """
+    for m in magnitudes:
+        
 
     changes = []
 

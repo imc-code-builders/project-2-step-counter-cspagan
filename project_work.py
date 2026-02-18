@@ -14,19 +14,19 @@ def get_changes(magnitudes):
     NOTE: Your return list should always be one element smaller than the input list. Why is that?
     EXAMPLE: if magnitudes = [100, 200, 50, 100], this function should return [100, -150, 50]
     """
-    for m in magnitudes:
-        
 
     changes = []
 
-    # TODO: For each pair, calculate: next_value - current_value
+    for i in range(len(magnitudes)-1):
+        changes.append(magnitudes[i+1] - magnitudes[i])
 
     return changes
 
+print(get_changes([100, 80, 120]))
 
 def count_peaks(changes, threshold):
     """Count how many changes are above threshold.
-
+ for change in changes
     Args:
         changes: A list of changes in acceleration in chronological order.
         threshold: A number above which we consider an acceleration change to indicate a step.
@@ -39,24 +39,22 @@ def count_peaks(changes, threshold):
     step_count = 0
 
     # TODO: Count changes greater than or equal to threshold
-
+    for change in changes:
+        if change >= threshold:
+            step_count += 1
+    
     return step_count
 
 
 def count_steps(magnitudes, threshold=STEP_THRESHOLD):
-    """Main function: use other functions to count steps.
-    
-    Args:
-        magnitudes: A list of acceleration readings in chronological order.
-        threshold: the minimum acceleration change that is considered a step.
+    changes = get_changes(magnitudes)
+    steps = count_peaks(changes, threshold)
 
-    Returns:
-        The number of steps the user took.
-    """
+    
 
     # TODO: Use get_changes() and count_peaks()
 
-    return 0
+    return steps
 
 
 if __name__ == "__main__":
